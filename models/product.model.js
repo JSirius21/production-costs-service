@@ -1,6 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
   const Product = sequelize.define(
-    "product",
+    'product',
     {
       id: {
         type: Sequelize.INTEGER,
@@ -21,7 +21,7 @@ module.exports = (sequelize, Sequelize) => {
     {
       freezeTableName: true,
     }
-  );
+  )
 
-  return Product;
-};
+  return Product
+}

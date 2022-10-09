@@ -1,6 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
   const Category = sequelize.define(
-    "category",
+    'category',
     {
       id: {
         type: Sequelize.INTEGER,
@@ -24,7 +24,7 @@ module.exports = (sequelize, Sequelize) => {
     {
       freezeTableName: true,
     }
-  );
+  )
 
-  return Category;
-};
+  return Category
+}

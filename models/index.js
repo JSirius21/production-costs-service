@@ -1,6 +1,6 @@
-const config = require("../config/db.config");
+const config = require('../config/db.config')
 
-const Sequelize = require("sequelize");
+const Sequelize = require('sequelize')
 const sequelize = new Sequelize(config.DB, config.USER, config.PASSWORD, {
   host: config.HOST,
   dialect: config.dialect,
@@ -12,14 +12,14 @@ const sequelize = new Sequelize(config.DB, config.USER, config.PASSWORD, {
     acquire: config.pool.acquire,
     idle: config.pool.idle,
   },
-});
+})
 
-const db = {};
+const db = {}
 
-db.Sequelize = Sequelize;
-db.sequelize = sequelize;
+db.Sequelize = Sequelize
+db.sequelize = sequelize
 
-db.category = require("../models/category.model")(sequelize, Sequelize);
-db.product = require("../models/product.model")(sequelize, Sequelize);
+db.category = require('../models/category.model')(sequelize, Sequelize)
+db.product = require('../models/product.model')(sequelize, Sequelize)
 
-module.exports = db;
+module.exports = db

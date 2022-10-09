@@ -1,28 +1,27 @@
-const Sequelize = require("sequelize");
-const sequelize = require("./../config/db.config.js");
+module.exports = (sequelize, Sequelize) => {
+  const Product = sequelize.define(
+    "product",
+    {
+      id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+      },
+      product_name: {
+        type: Sequelize.STRING,
+      },
+      createdAt: {
+        type: Sequelize.DATE,
+      },
+      updatedAt: {
+        type: Sequelize.DATE,
+      },
+    },
+    {
+      freezeTableName: true,
+    }
+  );
 
-const Product = sequelize.define(
-  "product",
-  {
-    id: {
-      type: Sequelize.INTEGER,
-      allowNull: false,
-      autoIncrement: true,
-      primaryKey: true,
-    },
-    product_name: {
-      type: Sequelize.STRING,
-    },
-    createdAt: {
-      type: Sequelize.DATE,
-    },
-    updatedAt: {
-      type: Sequelize.DATE,
-    },
-  },
-  {
-    freezeTableName: true,
-  }
-);
-
-module.exports = Product;
+  return Product;
+};

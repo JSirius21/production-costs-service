@@ -12,12 +12,12 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING,
         allowNull: true,
       },
-      createdAt: {
-        type: Sequelize.DATE,
-      },
-      updatedAt: {
-        type: Sequelize.DATE,
-      },
+      // createdAt: {
+      //   type: Sequelize.DATE,
+      // },
+      // updatedAt: {
+      //   type: Sequelize.DATE,
+      // },
     },
     {
       freezeTableName: true,

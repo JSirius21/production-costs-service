@@ -16,8 +16,32 @@ const db = require('./models')
 const Category = db.category
 const Product = db.product
 const Material = db.material
-const Init = require('./config/init/init')
 
+Product.belongsToMany(Material, {
+  through: 'product_material',
+  as: 'materials',
+  foreignKey: 'product_id',
+})
+
+Material.belongsToMany(Product, {
+  through: 'product_material',
+  as: 'products',
+  foreignKey: 'material_id',
+})
+
+Category.hasMany(Material, { as: 'materials' })
+Material.belongsTo(Category, {
+  foreignKey: 'category_id',
+  as: 'category',
+})
+
+Category.hasMany(Category, { as: 'children' })
+Category.belongsTo(Category, {
+  foreignKey: 'parent_id',
+  as: 'parent',
+})
+
+const Init = require('./config/init/init')
 db.sequelize.sync({ force: true }).then(async () => {
   console.log('Drop and Resync Database with { force: true }')
   await Init.categories.initialize(Category)
@@ -25,7 +49,7 @@ db.sequelize.sync({ force: true }).then(async () => {
   await Init.products.initialize(Product)
 })
 
-app.listen(3000, () => console.log('Server started...'))
+app.listen(3000, () => console.log('Server started...')) 
 
 // Init routes
 const productsRouter = require('./routes/products.route')

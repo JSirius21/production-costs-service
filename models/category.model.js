@@ -10,6 +10,7 @@ module.exports = (sequelize, Sequelize) => {
       },
       category_name: {
         type: Sequelize.STRING,
+        allowNull: false,
       },
       parent_id: {
         type: Sequelize.INTEGER,

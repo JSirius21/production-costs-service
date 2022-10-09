@@ -7,3 +7,11 @@ GET http://localhost:3000/products/1
 ###
 
 GET http://localhost:3000/categories 
+
+###
+
+GET http://localhost:3000/materials 
+
+###
+
+GET http://localhost:3000/materials/1 

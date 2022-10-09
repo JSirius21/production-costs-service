@@ -15,17 +15,17 @@ app.use(express.urlencoded({ extended: true }))
 const db = require('./models')
 const Category = db.category
 const Product = db.product
-const Init = require('./config/init-db')
+const Material = db.material
+const Init = require('./config/init/init')
 
-db.sequelize.sync({ force: true }).then(() => {
+db.sequelize.sync({ force: true }).then(async () => {
   console.log('Drop and Resync Database with { force: true }')
-  Init.initialize(Category, Product)
+  await Init.categories.initialize(Category)
+  await Init.materials.initialize(Material)
+  await Init.products.initialize(Product)
 })
 
 app.listen(3000, () => console.log('Server started...'))
-
-// // DB Connection
-// require("./config/db.config.js");
 
 // Init routes
 const productsRouter = require('./routes/products.route')
@@ -33,3 +33,6 @@ app.use('/products', productsRouter)
 
 const categoriesRouter = require('./routes/categories.route')
 app.use('/categories', categoriesRouter)
+
+const materialsRouter = require('./routes/materials.route')
+app.use('/materials', materialsRouter)

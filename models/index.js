@@ -21,5 +21,6 @@ db.sequelize = sequelize
 
 db.category = require('../models/category.model')(sequelize, Sequelize)
 db.product = require('../models/product.model')(sequelize, Sequelize)
+db.material = require('../models/material.model')(sequelize, Sequelize)
 
 module.exports = db
